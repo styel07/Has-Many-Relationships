@@ -77,7 +77,7 @@ posts_id INTEGER REFERENCES posts(id) NOT NULL
 -- ON posts_id = posts.id;
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created before January 1, 2015
--- SELECT body AS "comment_body", title AS "post_title", url AS "post_url"
+-- SELECT title AS "post_title", url AS "post_url", body AS "comment_body"
 -- FROM comments
 -- INNER JOIN posts
 -- ON posts_id = posts.id
@@ -91,10 +91,20 @@ posts_id INTEGER REFERENCES posts(id) NOT NULL
 -- WHERE posts.created_at > '2015-01-01';
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the comment body contains the word 'USB'
-
+-- SELECT title AS "post_title", url AS "post_url", body AS "comment_body"
+-- FROM comments
+-- INNER JOIN posts
+-- ON posts.id = posts_id
+-- WHERE body LIKE '%USB%';
 
 -- Create a query to get the post title (aliased as post_title), first name of the author of the post, last name of the author of the post, and comment body (aliased to comment_body), where the comment body contains the word 'matrix' ( should have 855 results )
-
+-- SELECT title AS "post_title", first_name, last_name, body
+-- FROM posts
+-- INNER JOIN comments
+-- ON posts.id = posts_id
+-- INNER JOIN users
+-- ON users.id = posts.users_id
+-- WHERE body LIKE '%matrix%';
 
 -- Create a query to get the first name of the author of the comment, last name of the author of the comment, and comment body (aliased to comment_body), where the comment body contains the word 'SSL' and the post content contains the word 'dolorum' ( should have 102 results )
 
