@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS posts CASCADE;
-DROP TABLE IF EXISTS comments CASCADE;
+-- DROP TABLE IF EXISTS users CASCADE;
+-- DROP TABLE IF EXISTS posts CASCADE;
+-- DROP TABLE IF EXISTS comments CASCADE;
 
 CREATE TABLE users (
 id serial PRIMARY KEY,
@@ -32,7 +32,7 @@ users_id INTEGER REFERENCES users(id) NOT NULL,
 posts_id INTEGER REFERENCES posts(id) NOT NULL
 );
 
-\i scripts/blog_data.sql
+--\i scripts/blog_data.sql
 
 -- Create a query to get all fields from the users table
 --SELECT * FROM users;
@@ -71,16 +71,24 @@ posts_id INTEGER REFERENCES posts(id) NOT NULL
 -- WHERE posts.created_at < '2015-01-01';
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as 'Post Title'), and the all the comment's fields
-SELECT comments.*, title AS "Post Title"
-FROM comments
-INNER JOIN posts
-ON posts_id = posts.id;
+-- SELECT comments.*, title AS "Post Title"
+-- FROM comments
+-- INNER JOIN posts
+-- ON posts_id = posts.id;
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created before January 1, 2015
-
+-- SELECT body AS "comment_body", title AS "post_title", url AS "post_url"
+-- FROM comments
+-- INNER JOIN posts
+-- ON posts_id = posts.id
+-- WHERE posts.created_at < '2015-01-01';
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created after January 1, 2015
-
+-- SELECT body AS "comment_body", title AS "post_title", url AS "post_url"
+-- FROM comments
+-- INNER JOIN posts
+-- ON posts_id = posts.id
+-- WHERE posts.created_at > '2015-01-01';
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the comment body contains the word 'USB'
 
